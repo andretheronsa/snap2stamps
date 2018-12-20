@@ -24,7 +24,7 @@
       <selectedPolarisations>VV</selectedPolarisations>
       <firstBurstIndex>1</firstBurstIndex>
       <lastBurstIndex>9</lastBurstIndex>
-      <wktAoi/>
+      <wktAoi>POLYGON</wktAoi>
     </parameters>
   </node>
   <node id="TOPSAR-Split(2)">
