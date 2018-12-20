@@ -40,12 +40,22 @@ try:
                 if "GPTBIN_PATH" in line:
                         GPT = line.split('=')[1].strip()
                         print GPT
+		if "LONMIN" in line:
+			LONMIN = line.split('=')[1].strip()
+                if "LATMIN" in line:
+                        LATMIN = line.split('=')[1].strip()
+                if "LONMAX" in line:
+                        LONMAX = line.split('=')[1].strip()
+                if "LATMAX" in line:
+                        LATMAX = line.split('=')[1].strip()
 		if "CACHE" in line:
 			CACHE = line.split('=')[1].strip()
 		if "CPU" in line:
 			CPU = line.split('=')[1].strip()
 finally:
         in_file.close()
+
+polygon='POLYGON (('+LONMIN+' '+LATMIN+','+LONMAX+' '+LATMIN+','+LONMAX+' '+LATMAX+','+LONMIN+' '+LATMAX+','+LONMIN+' '+LATMIN+'))'
 
 #############################################################################
 ### TOPSAR Splitting (Assembling) and Apply Orbit section ####
@@ -97,6 +107,7 @@ for acdatefolder in sorted(os.listdir(slavefolder)):
         # Replace the target string
         filedata = filedata.replace('INPUTFILE', files[0])
 	filedata = filedata.replace('IWs',IW)
+        filedata = filedata.replace('POLYGON',polygon)
 	filedata = filedata.replace('OUTPUTFILE',splitslavefolder+'/'+outputname)
        # # Write the file out again
         with open(graph2run, 'w') as file:
@@ -109,6 +120,7 @@ for acdatefolder in sorted(os.listdir(slavefolder)):
         filedata = filedata.replace('INPUTFILE1', files[0])
 	filedata = filedata.replace('INPUTFILE2', files[1])
 	filedata = filedata.replace('IWs',IW)
+        filedata = filedata.replace('POLYGON',polygon)
 	filedata = filedata.replace('OUTPUTFILE',splitslavefolder+'/'+outputname)
         # Write the file out again
         with open(graph2run, 'w') as file:

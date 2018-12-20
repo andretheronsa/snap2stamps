@@ -17,7 +17,7 @@
       <selectedPolarisations>VV</selectedPolarisations>
       <firstBurstIndex>1</firstBurstIndex>
       <lastBurstIndex>10</lastBurstIndex>
-      <wktAoi/>
+      <wktAoi>POLYGON</wktAoi>
     </parameters>
   </node>
   <node id="Apply-Orbit-File">
